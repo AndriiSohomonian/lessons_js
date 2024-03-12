@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.</h2>
+        <script>
+            //Введення
+            const categoryLicense = prompt("Введіть категорію водійського посвідчення (А, В, С)")
+            let result
+
+            //обчислення
+            switch (categoryLicense) {
+                case 'A':
+                case 'А':// Укр. клавіатура
+                case 'a':
+                case 'а':// Укр. клавіатураф
+                    result = 'водійське посвідчення дійсне для мотоциклів.'
+                    break;
+                case 'B':
+                case 'Б':
+                case 'b':
+                case 'б':
+                    result = 'водійське посвідчення дійсне для легкових автомобілів.'
+                    break;
+                case 'C':
+                case 'С':
+                case 'c':
+                case 'с':
+                    result = 'водійське посвідчення дійсне для вантажних автомобілів.'
+                    break;
+                default:
+                    result = 'введена некоректна інформація.'
+                    break;
+            }
+            //Виведення
+            document.write(`Результат: ${result}`)
+        </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

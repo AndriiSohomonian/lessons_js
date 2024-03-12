@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Вивести таблицю з одним рядком і  7 стовпцями.</h2>
+        <div class="wrapper__result">
+            <script>
+                //Обчислення та виведення
+                document.write(`
+                <table class="table__wrapper">
+                <tr class="table__items">
+                `)
+                    for(let i=1; i<=7; ++i){
+                    const randNamber = 1 + Math.floor(Math.random() * 20)
+                        document.write(`
+                        <td>${i}</td>
+                        `)
+                    }
+                document.write(`
+                </tr>
+                <table>
+                `)
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

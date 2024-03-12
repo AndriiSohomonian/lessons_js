@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №14</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №14</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести).</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                const totalPrice = parseFloat(prompt('Введіть суму яку треба споатити:'))
+                let userPeid = 0
+                let userPay = 0
+                //Обчислення та виведення
+                do{
+                    userPay = parseFloat(prompt('введіть суму платежу:'))
+                    userPeid += userPay
+                    
+                    if(userPeid <= totalPrice)
+                        alert(`Залишилося заплатити ${totalPrice - userPeid}`)
+                    else{
+                        alert(` Ви пеерплатили ${totalPrice - userPeid} `)
+                        break
+                    }
+                }while(userPeid !== totalPrice)
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task14.html">спробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
