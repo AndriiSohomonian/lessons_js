@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</h2>
+        <script>
+        //введуння
+        const itemPrice = parseFloat(prompt('Введіть вартість товару:'));
+        const quantityMoney = parseFloat(prompt('Введіть кількість грошей:'));
+        //обчислення та виведення 
+        if (quantityMoney >= itemPrice)
+            confirm('Платіж проведено успішно, бажаєте придбати лотерею за 4грн?')
+        else 
+            alert(`Недостатньо коштів на рахунку, на вашому рахунку ${quantityMoney}грн. Вартість товару ${itemPrice}`);
+        </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

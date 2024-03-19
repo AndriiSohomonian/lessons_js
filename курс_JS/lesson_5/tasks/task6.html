@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №6</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №6</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</h2>
+        <div class="wrapper__result-ls5-ex6">
+            <script>
+                //Введення
+                let countTable = 0
+                //Обчислення та виведення
+                for( let tables = 0; tables<3; ++tables){
+                    document.write(`
+                    <table class="table__wrapper">
+                    `)
+                    for(let rows = 0; rows < 3; ++rows){
+                        document.write(`
+                        <tr class="table__items">
+                        `)
+                            for (let column = 1; column <= 3; ++column){
+                                countTable++
+                                document.write(`<td>${countTable}</td>`)
+                            }
+                        document.write(`
+                        </tr>
+                        `)
+                    }
+                    document.write(`
+                    </table>
+                    `)
+                }
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

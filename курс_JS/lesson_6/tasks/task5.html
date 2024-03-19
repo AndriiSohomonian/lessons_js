@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Є n бактерій червоного кольору. Через 1 одиницю часу червона бактерія змінюється на зелену, потім ще через 1 одиницю часу ділиться на червону та зелену. Скільки буде всіх бактерій через k одиниць часу?</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                
+                const bacteriumRedStart = parseInt(prompt('Введіть кількість червоних бактерій:'))
+                const unitOfTime = parseInt(prompt('Введіть кількість часу:'))
+                let bacteriumRed = 0, bacteriumGreen = 0, unitOfTimeCount = 0
+                //Обчислення та виведення
+                if(bacteriumRedStart>0){
+                    for(let i=0 ;i<bacteriumRedStart ; i++ ){
+                        if(unitOfTimeCount <= unitOfTime){
+                            unitOfTimeCount++
+                            bacteriumRed++
+                            if(unitOfTimeCount <= unitOfTime){
+                            unitOfTimeCount++
+                            bacteriumGreen++
+                                if(unitOfTimeCount <= unitOfTime){
+                                bacteriumGreen++
+                                bacteriumRed++ 
+                                unitOfTimeCount++
+                                }else break
+                            }else break
+                        }else break
+                    }
+                }else document.write('Невистачає червоних бактерій для початку процесу<br>')
+                document.write(`червоні${bacteriumRed * bacteriumRedStart} ,Зелені${bacteriumGreen * bacteriumRedStart}`)
+            </script>
+        </div>
+        <a class="link__back" href="./task5.html">спробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
