@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</h2>
+        <script>
+        const min = 1, max = 5;
+        const randomNumber = min + Math.floor(Math.random()*(max-min+1));
+        let guessNumber = parseFloat(prompt('Спробуйте вгадати цифру від 1 до 5'))
+        let result;
+        if (guessNumber < 1 || guessNumber >5)
+            result = 'Ви ввели невірну цифру, Спробуйте ще раз!'
+        else if(randomNumber == guessNumber)
+            result = `Вітаю, ви вгадали цифру ${randomNumber} з першої спроби!`
+        else{ 
+            guessNumber = parseFloat(prompt('Ви не вгадали цифру, спробуйте ще раз!'));
+            if (randomNumber == guessNumber)
+                result = `Вітаю, ви вгадали цифру ${randomNumber} з другої спроби!`
+            else
+                result = `Ви не вгадали цифру ${randomNumber} з двох спроб, можливо наступного разу пощастить більше!`
+}
+document.write(`<p>${result}</p>`);
+        </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function numberOfEven (number){
+                    let result = 0
+                    if( number % 2 == 0) result++
+                    return result
+                }
+                function numberOfPositive (number){
+                    let result = 0
+                    if(number>0) result++
+                    return result
+                }
+                function greaterThan100 (number){
+                    let result = 0
+                    if(number>100) result++
+                    return result
+                }
+                //введення
+                const a = parseFloat(prompt('Введіть число a:', 0))
+                const b = parseFloat(prompt('Введіть число b:', 0))
+                const c = parseFloat(prompt('Введіть число c:', 0))
+                let even, positive, more100
+                //обчислення
+                even = numberOfEven(a) + numberOfEven(b) + numberOfEven(c) 
+                positive = numberOfPositive (a) + numberOfPositive (b) + numberOfPositive (c)
+                more100 = greaterThan100 (a) + greaterThan100 (b) + greaterThan100 (c)
+                //виведення
+                document.write(`
+                Ви ввели: a=${a}, b=${b}, c=${c}, <br>
+                1)Кількість парних чисел: ${even}<br>
+                2)Кількість додатніх чисел: ${positive}<br>
+                3)Кількість чисел більших за 100: ${more100}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

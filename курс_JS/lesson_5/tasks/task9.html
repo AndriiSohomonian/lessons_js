@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №9</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №9</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                if(confirm('Зіграємо в гру? Загадайте число, а ком\'ютер спробує його вгадати. Гра буде продовжуватись поки ком\'ютер не вгадає ваше число. Почнемо?'))
+                {
+                    const numberMin = parseInt(prompt('Введіть мінімальне число з якого комп\'ютер почне вгадувати'))
+                    const numberMax = parseInt(prompt('Введіть максимальне число з якого комп\'ютер почне вгадувати'))
+                    let getNumber
+                    let result
+                    let count = 0
+                    //Обчислення та виведення
+                    do{
+                        getNumber = Math.floor(Math.random() * (numberMax - numberMin + 1) ) + numberMin;
+                        result = confirm(` ${getNumber} - це число яке ви загадали? `)
+                        count++
+                    }while(result !== true)
+                    document.write(`Ваше число ${getNumber}, ком\'ютер вгадав його з ${count} спроби. `)
+                }
+                else document.write(`можливо наступного разу ;)`)
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

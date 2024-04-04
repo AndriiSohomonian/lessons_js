@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем.</h2>
+        <div class="wrapper__result">
+            <script>
+                //введення 
+                const countNumber = parseInt(prompt('Cкільки випадкових чисел вивести?'))
+                //обчислення та виведення
+                if(countNumber>0){
+                    document.write(`<ul>`)
+                    for(let i=1; i<=countNumber; ++i){
+                    const randNamber = 1 + Math.floor(Math.random() * 100)
+                        document.write(`<li> Number №${i}: ${randNamber}</li>`)
+                    }
+                    document.write(`</ul>`)
+                }else alert('Ви ввели некоректне значення!')
+                </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
