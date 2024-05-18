@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</h2>
+        <script>
+            //Введення
+            const seconds = parseFloat(prompt('Введіть кількість секунд', '600'));
+            
+            //виведення
+            document.write(`
+            <table class="table__wrapper">
+                <tr class="table__items">
+                    <th>Кількість секунд</th>
+                    <th>кількість хвилин в даній кількості секунд</th>
+                    <th>кількість годин в даній кількості секунд</th>
+                </tr>
+                <tr class="table__items">
+                    <td>${seconds}</td>
+                    <td>${seconds / 60}хв.</td>
+                    <td>${seconds/3600}год.</td>
+                </tr>
+            </table>
+            `)
+            </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

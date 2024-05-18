@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано масив елементів. Вивести на екран елементи, що більші за 100</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function getRandom(max) {
+                     return Math.floor(Math.random() * max);
+                }
+                function getMassif(getNumberElement) {
+                    let arr = []
+                    for(let i = 0; i < getNumberElement; i++){
+                        arr.push(getRandom(max))
+                    }
+                    return arr
+                }
+                function getMassifMore100 (){
+                    let arrMore100 = []
+                    for(let more100 of generatedMassif){
+                        if (more100 > 100) arrMore100.push(more100)
+                    }
+                    return arrMore100
+                }
+                //введення
+                const getNumberElement = parseInt(prompt('Введіть кількість елементів масиву: '))
+                const max = parseInt(prompt('Введіть максимальне число масиву: '))
+                const generatedMassif = getMassif(getNumberElement)
+                //виведення
+                document.write(`
+                Було створено масив з ${getNumberElement} елементів: ${generatedMassif}<br>
+                Елементи в цьому масиві більші за 100: ${getMassifMore100()}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

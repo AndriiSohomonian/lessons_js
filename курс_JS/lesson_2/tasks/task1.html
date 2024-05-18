@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</h2>
+        
+        <script>
+            //Введення значень a, b
+            const numA = parseFloat(prompt('Введіть значення "а" для обчислення виразів', '3'));
+            const numB = parseFloat(prompt('Введіть значення "b" для обчислення виразів', '6'));
+            
+            //обчислення
+            // 1. Додавання
+            const res1 = numA + numB;
+            // 2. Множення
+            const res2 = numA * numB;
+            // 3. Ділення
+            const res3 = numA / numB;
+            
+            //Виведення результату у таблицю
+            document.write(`
+            <table class="table__wrapper">
+                <tr class="table__items">
+                    <th>Дія</th>
+                    <th>Вираз</th>
+                    <th>Результат</th>
+                </tr>
+                <tr class="table__items">
+                    <td>Додавання</td>
+                    <td>${numA} + ${numB}</td>
+                    <td>Результат = ${res1}</td>
+                </tr>
+                <tr class="table__items">
+                    <td>Множення</td>
+                    <td>${numA} * ${numB}</td>
+                    <td>Результат = ${res2}</td>
+                </tr>
+                <tr class="table__items">
+                    <td>Ділення</td>
+                    <td>${numA} / ${numB}</td>
+                    <td>Результат = ${res3}</td>
+                </tr>
+            </table>
+            `)
+            </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

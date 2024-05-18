@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №10</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №10</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                // function names(arr) {
+                //     const newPlates = arr.filter(element => element[0] === letter);
+                //     return newPlates;
+                // }
+                //введення
+                const prise = [200, 1300, 600, 1500, 1023, 127];
+                const texes = prise.map((element, index, arr) => element = (element - element * 0.8).toFixed(1))
+                //виведення
+                document.write(` 
+                Масив з іменами: ${prise}<br>
+                Перші букви масиву з іменами: ${texes}
+                `);
+            </script>
+        </div>
+        <a class="link__back" href="./task10.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html> 
