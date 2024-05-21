@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №8</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №8</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function randImage(){
+                    let imag
+                    let result
+                    const numberImg = Math.floor(Math.random()*4 + 1)
+                    switch (numberImg) {
+                    case 1:
+                        imag = "../../img/webp/apple.webp"
+                        break;
+                    case 2:
+                        imag = "../../img/webp/banana.webp"
+                        break;
+                    case 3:
+                        imag = "../../img/webp/grape.webp"
+                        break;
+                    case 4:
+                        imag = "../../img/webp/orange.webp"
+                        break;
+                    default:
+                        break;
+                }
+                return imag
+                }
+                function switchImage(){
+                    return document.write(`<img width="200px" src=${randImage()} alt="">`)
+                }
+                //введення
+                
+                
+                //Обчислення
+                
+                //виведення
+                switchImage()
+            </script>
+        </div>
+        
+        <a class="link__back" href="./task8.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

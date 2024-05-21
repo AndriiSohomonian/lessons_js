@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №6</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №6</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</h2>
+        <script>
+        //Введення
+            const quantityItemsFirst = parseFloat(
+                prompt("Введіть кількість першого товару", "8")
+            );
+            const priceItemsFirst = parseFloat(
+                prompt("Введіть вартість першого товару", "40")
+            );
+            
+            const quantityItemsSecond = parseFloat(
+                prompt("Введіть кількість другого товару", "15")
+            );
+            const priceItemsSecond = parseFloat(
+                prompt("Введіть вартість другого товару", "33")
+            );
+            
+            const quantityItemsThird = parseFloat(
+                prompt("Введіть кількість третього товару", "4")
+            );
+            const priceItemsThird = parseFloat(
+                prompt("Введіть вартість третього товару", "160")
+            );
+            
+            //Обчислення
+            const totalPriceFirst = quantityItemsFirst * priceItemsFirst;
+            const totalPriceSecond = quantityItemsSecond * priceItemsSecond;
+            const totalPriceThird = quantityItemsThird * priceItemsThird;
+            const totalPrice = totalPriceFirst + totalPriceSecond + totalPriceThird;
+            
+            //Виведення
+            document.write(`
+            <table class="table__wrapper">
+                <tr class="table__items">
+                    <th>Кількість товарів</th>
+                    <td>3</td>
+                </tr>
+                <tr class="table__items">
+                    <th>Перший товар</th>
+                    <td>Вар.од:${priceItemsFirst}, К-сть:${quantityItemsFirst}, ціна:${totalPriceFirst}</td>
+                </tr>
+                <tr class="table__items">
+                    <th>Другий товар</th>
+                    <td>Вар.од:${priceItemsSecond}, К-сть:${quantityItemsSecond}, ціна:${totalPriceSecond}</td>
+                </tr>
+                <tr class="table__items">
+                    <th>Третій товар</th>
+                    <td>Вар.од:${priceItemsThird}, К-сть:${quantityItemsThird}, ціна:${totalPriceThird}</td>
+                </tr>
+                <tr class="table__items">
+                    <th>Загальна ціна:</th>
+                    <td>${totalPrice}</td>
+                </tr>
+            </table>
+            `);
+            </script>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

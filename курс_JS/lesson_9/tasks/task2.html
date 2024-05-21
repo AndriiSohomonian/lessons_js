@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function creattion(getNumberElement) {
+                    let arr = new Array(getNumberElement).fill(1)
+                    arr.fill(7,Math.ceil(getNumberElement/2))
+                    return arr
+                }
+                //введення
+                const getNumberElement = parseInt(prompt('Введіть кількість елементів масиву:'))
+                //виведення
+                alert(creattion(getNumberElement))
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
