@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №8</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №8</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Підрахувати кількість цін, що більше за 1000</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                /*------------------------------------------------------------*/
+                function getRandom(min = 1, max = 10000) {
+                    return min + Math.floor(Math.random() * (max - min + 1))
+                }
+                /*------------------------------------------------------------*/
+                //введення
+                const period = parseInt(prompt("Введіть період: ", "10"))
+                const papersPriseHistory = []
+                /*------------------------------------------------------------*/
+                //обчислення
+                for(let i = 0; i < period; i++){
+                    papersPriseHistory.push(getRandom())
+                } 
+                const countMore1000 = papersPriseHistory.reduce(
+                    (prevCount, el) => el > 1000 ? prevCount + 1 : prevCount,
+                    0
+                )
+                /*------------------------------------------------------------*/
+                //виведення
+                document.write(`
+                Масив з цінами на цінні папери за ${period} день/днів: ${papersPriseHistory}<br>
+                Кількість цін більших за 1000: ${countMore1000}
+                `)
+                
+
+            </script>
+        </div>
+        <a class="link__back" href="./task8.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

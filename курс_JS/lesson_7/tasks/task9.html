@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №9</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №9</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function temperature(){
+                    while(confirm('Продовжим записувати температуру?')){
+                    number = parseFloat(prompt('Введіть температуру:'))
+                        if(number<0) negativeTemperature++
+                    }
+                    return negativeTemperature
+                }
+                //введення
+                let number
+                let negativeTemperature = 0
+                //Обчислення
+                
+                //виведення
+                document.write(`
+                Кількість введених відєминих значень температури: ${temperature()}
+                `)
+            </script>
+        </div>
+        
+        <a class="link__back" href="./task9.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №7</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №7</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Вивести на екран N абзаців (N вводиться користувачем)</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                const paragraph = parseInt(prompt('Введіть кількість абзаців:'))
+                //Обчислення та виведення
+                for(let i = 1; i<=paragraph; ++i){
+                    document.write(`
+                    <div class="ls5-ex7">
+                    <h1> Заголовок ${i} </h1>`)
+                    for( let j = 1; j <= i; ++j){
+                        document.write(` <p> Розділ: ${i}, параграф: ${j}</p> `)
+                    }
+                    document.write(`</div>`)
+                }
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

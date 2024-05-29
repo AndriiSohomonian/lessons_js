@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №7</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №7</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</h2>
+        <div class="wrapper__result">
+            <script>
+                //введення
+                const oldPrice = [200, 1300, 600, 1500, 1023, 127]
+                let newPrice = oldPrice.forEach( (element, index, baseArrRef) => {
+                    if (element > 1000 ) baseArrRef[index] *= 0.7
+                })
+                //виведення
+                document.write(`
+                Ціна після знижки ${oldPrice}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task7.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html> 

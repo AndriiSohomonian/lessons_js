@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №11</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №11</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                const minNumber = parseInt(prompt('Введіть мінімальне число:'))
+                const maxNumber = parseInt(prompt('Введіть максимальне число:'))
+                let count = 0
+                let countOperations = 0
+                    //Обчислення та виведення
+                    pass: for(let i= minNumber; i<=maxNumber; ++i){
+                    if(countOperations<5){
+                        if(i % 2 !== 0) {
+                            count += i;
+                            countOperations++
+                        } else continue pass
+                    }
+                    else break
+                    
+                }
+                document.write(`Cума 5 перших непарних чисел в проміжку від ${minNumber} до ${maxNumber} = ${count} `)
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
