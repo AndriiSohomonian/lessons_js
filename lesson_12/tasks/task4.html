@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком .</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                /*------------------------------------------------------------*/
+                /*генерація рандомного числа*/
+                function getRandom(min = 1, max = 100) {
+                    return min + Math.floor(Math.random() * (max - min + 1))
+                }
+                /*генерація рандомного масива*/
+                function getArr(arrLenght) {
+                    const arr = []
+                    for (let i = 0; i < arrLenght; i++) {
+                        const randomNum = getRandom()
+                        arr.push(randomNum)
+                    }
+                    return arr
+                }
+                /*Бульбашка*/
+                
+                /*змішування*/
+                // function getMix(arr) {
+                //     let leftIndex = 0
+                //     let rightIndex = arr.length - 1
+                //     while(leftIndex<rightIndex){
+                //         let changed = false
+                //         for (let i = leftIndex; i < rightIndex; i++) {
+                //             if (arr[i-1]>arr[i]) {
+                //                 let el = arr[i-1]
+                //                 arr[i-1] = arr[i]
+                //                 arr[i] = el
+                //                 changed = true
+                //                 document.write(`${arr}<br>`)
+                //             }
+                            
+                //         }
+                //         rightIndex--
+                //         document.write(`${arr}<br>`)
+                //         if (changed===false) break
+                //         /*---------*/
+                //         changed = false
+                //         for (let i = rightIndex; i > leftIndex; i--) {
+                //             if (arr[i-1]>arr[i]) {
+                //                 let el = arr[i-1]
+                //                 arr[i-1] = arr[i]
+                //                 arr[i] = el
+                //                 changed = true
+                //                 document.write(`${arr}<br>`)
+                //             }
+                //         }
+                //         leftIndex++
+                //         if (changed===false) break
+                        
+                //     }
+                    
+                // }
+                //введення
+                let randomArr = JSON.parse(JSON.stringify(getArr(5)))
+                /*------------------------------------------------------------*/
+                //обчислення
+                
+                //виведення
+
+                document.write(`Початковий масив: [${randomArr}]<br>`)
+                document.write(`Сортування методом бульбашка:<br>`)
+                let changed
+                    let arrBubble = [...randomArr]
+                    do{
+                        changed = false
+                        for( let i = 1; i < arrBubble.length; ++i){
+                            if (arrBubble[i-1]>arrBubble[i]) {
+                                let tmp = arrBubble[i-1];
+                                arrBubble[i-1] = arrBubble[i]
+                                arrBubble[i] = tmp
+                                changed = true
+                                document.write(`[${arrBubble}]<br>`)
+                            }
+                        }
+                    }while (changed)
+                document.write(`Сортування методом змішування:<br>`)
+                let arrMix = [...randomArr]
+                let leftIndex = 0
+                let rightIndex = arrMix.length - 1
+                while(leftIndex<rightIndex){
+                    let changed = false
+                    for (let i = leftIndex; i < rightIndex; i++) {
+                        if (arrMix[i-1]>arrMix[i]) {
+                            let el = arrMix[i-1]
+                            arrMix[i-1] = arrMix[i]
+                            arrMix[i] = el
+                            changed = true
+                            document.write(`[${arrMix}]<br>`)
+                        }     
+                    }
+                    rightIndex--
+                    document.write(`[${arrMix}]<br>`)
+                    if (changed===false) break
+                    /*---------*/
+                    changed = false
+                    for (let i = rightIndex; i > leftIndex; i--) {
+                        if (arrMix[i-1]>arrMix[i]) {
+                            let el = arrMix[i-1]
+                            arrMix[i-1] = arrMix[i]
+                            arrMix[i] = el
+                            changed = true
+                            document.write(`[${arrMix}]<br>`)
+                        }
+                    }
+                    leftIndex++
+                    if (changed===false) break 
+                }
+                document.write(`Сортування методом включення:`)
+                let arrInclusion = [...randomArr]
+                for (let k = 1; k < arrInclusion.length; k++) {
+                        const el = arrInclusion[k]
+                        let i = k-1
+                        while(i>=0 && arrInclusion[i]>el){
+                            arrInclusion[i+1] = arrInclusion[i]
+                            i--
+                            document.write(`[${arrInclusion}]<br>`)
+                        }
+                        arrInclusion[i+1] = el
+                        document.write(`[${arrInclusion}]<br>`)
+                    }
+            </script>
+        </div>
+        <a class="link__back" href="./task5.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
