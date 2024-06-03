@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №15</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №15</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувач поступово вводить показники температури протягом року. Знайти середню температуру.</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                const months = 12
+                let temperatureOfMonth = 0
+                let generalTemperature = 0
+                //Обчислення та виведення
+                for(let i = 1; i<=months; i++){
+                    temperatureOfMonth = parseFloat(prompt(`Введіть температуру для ${i} місяця:`))
+                    generalTemperature += temperatureOfMonth
+                }
+                document.write(`Середня температура за рік ${generalTemperature/months} градусів.`)
+            </script>
+        </div>
+        <a class="link__back" href="./task15.html">спробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

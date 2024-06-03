@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №8</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №8</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                function plates(arr, letter = "A") {
+                    const newPlates = arr.filter(element => element[0] === letter);
+                    return newPlates;
+                }
+                //введення
+                const allPlates = ['BI5675AC', 'AI2992FE', 'TR4334IR', 'AB5445IF', 'ER4343TR'];
+                
+                //виведення
+                document.write(` 
+                Початковий масив з номерами: ${allPlates}<br>
+                Масив після сортування: ${plates(allPlates)}
+                `);
+            </script>
+        </div>
+        <a class="link__back" href="./task8.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html> 

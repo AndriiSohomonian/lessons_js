@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити 10 елементів для введення цін продуктів</h2>
+        <div class="wrapper__result">
+            <script>
+                document.write(` <table class="table__wrapper"> `)
+                for(let i=1; i<=10; ++i){
+                    const priseProduct = parseFloat(prompt(`Введіть ціну для ${i} продукту:`)) 
+                    document.write(`
+                    <tr class="table__items">
+                        <th>Product №: ${i}</th>
+                        <td>Ціна: ${priseProduct} </td>
+                    </tr>
+                    `)
+                }
+                document.write(` <table> `)
+                </script>
+        </div>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №13</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №13</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.</h2>
+        <div class="wrapper__result">
+            <script>
+                //Введення
+                const sizeFieldN = parseInt(prompt('Введіть ширину поля(N):'))
+                const sizeFieldM = parseInt(prompt('Введіть висоту поля(M):'))
+                const shipN = Math.floor(Math.random() * sizeFieldN + 1)
+                const shipM = Math.floor(Math.random() * sizeFieldM + 1)
+                const numberOfShots = parseInt(prompt('Введіть кількість пострілів:'))
+                let shotN, shotM, shot = 0
+
+                //Обчислення та виведення
+                do{
+                    shotN = parseInt(prompt('Введіть номер клітки для пострілу по ширині(N):'))
+                    shotM = parseInt(prompt('Введіть номер клітки для пострілу по висоті(M):'))
+                        if(shotN===shipN && shotM===shipM){
+                        alert(`Вітаю, ви влучили в корабель який був розташований за клітками N:${shipN} та M:${shipM}!`)
+                        break}
+                        else{
+                            shot++
+                            alert(`Ви не влучили! Залишилось ${numberOfShots - shot} спроби.`)
+                        }
+                }while(shot<numberOfShots)
+                document.write(`Корабель був розташований за клітками N:${shipN} та M:${shipM}!`)
+            </script>
+        </div>
+        <a class="link__back" href="./task13.html">спробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

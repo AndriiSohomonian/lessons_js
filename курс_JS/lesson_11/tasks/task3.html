@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди. :</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                /*------------------------------------------------------------*/
+                function getRandomNumber (max) {
+                    return Math.floor(Math.random() * max)
+                }
+                /*Розміщення кораблів*/
+                function accommodationOfShips(seaBattleMap){
+                    let ship = 5
+                    do{
+                        let row = getRandomNumber (6)
+                        let column = getRandomNumber (6)
+                        if (seaBattleMap[row][column] !== 1) {
+                            seaBattleMap [row][column] = 1
+                            ship--
+                        }else continue
+                    }while(ship !== 0)
+                    return seaBattleMap
+                }
+                function gameseaBattle(seaBattleMapWithShips) {
+                    let shots = parseInt(prompt('Введіть кількість пострілів:'))
+                    let ship = 5
+                    do {
+                    let x = parseInt(prompt('Введіть рядок для пострілу:'))
+                    let y = parseInt(prompt('Введіть колонку для пострілу:'))
+                    if(x > 6 || y > 6){
+                        alert('Введені некоректні дані, поле бою 6Х6, спробуйте ще раз!')
+                        continue
+                    }if(seaBattleMapWithShips[x][y] === 1){
+                        seaBattleMapWithShips[x][y] = 0
+                        ship--
+                        shots--
+                        alert(`Влучили! Лишилось ${ship} кораблів та ${shots} пострілів`)
+                    }else{
+                        shots--
+                        alert(`Не влучили! Лишилось ${ship} кораблів та ${shots} пострілів`)
+                    }
+                } while (shots !== 0 && ship !== 0);
+                if(shots === 0 || ship > 0) alert('Ви програли!')
+                else alert('Вітаю, ви перемогли!')
+                }
+                //введення
+                let seaBattleMap = [
+                    [0,0,0,0,0,0],
+                    [0,0,0,0,0,0],
+                    [0,0,0,0,0,0],
+                    [0,0,0,0,0,0],
+                    [0,0,0,0,0,0],
+                    [0,0,0,0,0,0],
+                ]
+                let seaBattleMapWithShips = JSON.parse(JSON.stringify(accommodationOfShips(seaBattleMap)))
+                /*------------------------------------------------------------*/
+                //обчислення
+                
+                //виведення
+                gameseaBattle(seaBattleMapWithShips)
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task3.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
