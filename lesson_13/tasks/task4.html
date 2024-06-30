@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано масив хлопців і дівчат вивести всі можливі комбінації для танців з хлопців і дівчат.</h2>
+        <div class="wrapper__result">
+            <script>
+                /*функція*/
+                function res(resArr) {
+                    resArr.forEach(element => {
+                        document.write(element + '<br>')
+                    });
+                }
+
+                function generateCouples(men, women) {
+                    const couples = []
+
+                    function generateCoupl(men, women) {
+                        if (men.length>0) {
+                            for (const woman of women) {
+                                const pair = `${woman} -> ${men[0]} `
+                                if (!couples.includes(pair)) {
+                                    couples.push(pair)
+                                }
+                                generateCoupl(
+                                    women.filter(element => element !== woman),
+                                    men.slice(1)
+                                )
+                            }
+                            
+                        }
+                    }
+                    generateCoupl(men, women)
+                    res(couples)
+                }
+                /*------------------------------------------------------------*/
+                //введення
+                const men = ['David','Jake', 'Piter']
+                const women = ['Lilian','Suzan', 'Kate']
+                /*------------------------------------------------------------*/
+                //обчислення
+
+                /*------------------------------------------------------------*/
+                //виведення
+                generateCouples(men, women)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
