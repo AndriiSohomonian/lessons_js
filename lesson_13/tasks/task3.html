@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Виведіть всі можливі наступні комбінації ходів користувачів у грі“Хрестики-нулики”, починаючи з деякої заданої ситуації (тобто маємо двовимірний масив з елементами : 0 - нулик, Х - хрестик, пробіл - ще не зайнято, і вам треба самостійно вивести всі можливі шляхи заповнення ще незаповнених клітинок (де пробіли). Поки можна не підраховувати чи вже є 3 хрестики чи 3 нулики у рядок.</h2>
+        <div class="wrapper__result">
+            <script>
+                /*функція*/
+                function gen(board, freeStep) {
+                    if(freeStep === 0) {
+                        document.write("Таблиця<br>")
+                        for (let i = 0; i < board.length; i++) {
+                            document.write(`${board[i]}<br>`)
+                        }
+
+                    }else{
+                        for (let row = 0; row < board.length; row++) {
+                            for (let column = 0; column < board[row].length; column++) {
+                                if (board[row][column] === ' ') {
+                                    let copyingForZero = JSON.parse(JSON.stringify(board))
+                                    copyingForZero[row][column] = 0
+                                    gen(copyingForZero, freeStep-1)
+                                    let copyingForСross = JSON.parse(JSON.stringify(board))
+                                    copyingForСross[row][column] = 'x'
+                                    gen(copyingForСross, freeStep-1)
+                                }
+                            }
+                        }
+                    }
+                }
+            
+                /*------------------------------------------------------------*/
+                //введення
+                let board = [
+                    [' ', 0, 'x'],
+                    ['x', ' ', 0],
+                    [0, 'x', ' ']
+                ]
+                /*------------------------------------------------------------*/
+                //обчислення
+
+                /*------------------------------------------------------------*/
+                //виведення
+                gen(board, 3)
+            </script>
+        </div>
+        <a class="link__back" href="./task3.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
