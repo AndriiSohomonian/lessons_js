@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</h2>
+        <div class="wrapper">
+            <ul class="wrapper__list list1">
+                <li>----- Властивості ------</li>
+                <li>-	назва компанії на час розробки (назву періодично змінюють)</li> <!-- nameCompany -->
+                <li>-	власник компанії</li> <!-- companyOwner -->
+                <li>-	споснсори (масив спонсорів)</li> <!-- sponsors -->
+                <li>* прізвище спонсора</li> <!-- lastNameSponsors -->
+                <li>* ім’я  спонсора</li> <!-- nameSponsors -->
+                <li>* сума вкладень спонсора</li> <!-- amountSponsorsInvestment -->
+                <li>-	рік випуску</li> <!-- graduationYear -->
+                <li>-	вартість сайту</li> <!-- costSite -->
+            </ul>
+        </div>
+        <div class="wrapper__result">
+            <script>
+                
+                //введення
+                let arrCompany = [
+                    {
+                    someNameCompany :  `Amazon`,
+                    companyOwner : 'Jeke',
+                    sponsors : [
+                        {
+                            lastNameSponsors : 'Petison',
+                            nameSponsors : 'Piter',
+                            amountSponsorsInvestment : 10000
+                        },
+                        {
+                            lastNameSponsors : 'Wilson',
+                            nameSponsors : 'Tomas',
+                            amountSponsorsInvestment : 20000
+                        }
+                    ],
+                    graduationYear : 2013,
+                    costSite : 8000
+                    },
+                    /*--------------------------------------------------*/
+                    {
+                    someNameCompany :  `FedEx`,
+                    companyOwner : 'Michael',
+                    sponsors : [
+                        {
+                            lastNameSponsors : 'Brown',
+                            nameSponsors : 'Emily',
+                            amountSponsorsInvestment : 2000
+                        },
+                        {
+                            lastNameSponsors : 'Garcia ',
+                            nameSponsors : 'Olivia',
+                            amountSponsorsInvestment : 9000
+                        }
+                    ],
+                    graduationYear : 2002,
+                    costSite : 5000
+                    },
+                    /*--------------------------------------------------*/
+                    {
+                    someNameCompany :  `LG`,
+                    companyOwner : 'Sophia',
+                    sponsors : [
+                        {
+                            lastNameSponsors : 'Johnson ',
+                            nameSponsors : 'Daniel',
+                            amountSponsorsInvestment : 12000
+                        },
+                        {
+                            lastNameSponsors : 'Rodriguez',
+                            nameSponsors : 'Joseph',
+                            amountSponsorsInvestment : 3000
+                        }
+                    ],
+                    graduationYear : 2019,
+                    costSite : 30000
+                    },
+                    /*--------------------------------------------------*/
+                    {
+                    someNameCompany :  `bmw`,
+                    companyOwner : 'David',
+                    sponsors : [
+                        {
+                            lastNameSponsors : 'Miller',
+                            nameSponsors : 'Elizabeth',
+                            amountSponsorsInvestment : 14000
+                        },
+                        {
+                            lastNameSponsors : 'Jones',
+                            nameSponsors : 'Abigail',
+                            amountSponsorsInvestment : 18000
+                        }
+                    ],
+                    graduationYear : 2015,
+                    costSite : 45000
+                    },
+                    /*--------------------------------------------------*/
+                    {
+                    someNameCompany :  `LV`,
+                    companyOwner : 'Andrew',
+                    sponsors : [
+                        {
+                            lastNameSponsors : 'Lopez',
+                            nameSponsors : 'Ava',
+                            amountSponsorsInvestment : 50000
+                        },
+                        {
+                            lastNameSponsors : 'Smith',
+                            nameSponsors : 'Emma',
+                            amountSponsorsInvestment : 90000
+                        }
+                    ],
+                    graduationYear : 2005,
+                    costSite : 30000
+                    },
+                ]
+                /*------------------------------------------------------------*/
+                //обчислення
+                function getTotalSum (arr, property){
+                    let sum = 0
+                    for (const el of arr) {
+                        sum+= el[property]
+                    }
+                    return sum
+                }
+                /*загальну вартість усіх сайтів*/
+                    const totalCostSite = arrCompany.reduce(
+                        (prevSum, price) => prevSum + price.costSite,
+                        0
+                    )
+                /*кількість сайтів, що було зроблено між 2000 та 2009 рр*/
+                function developedOverTime(someArrCompany, minYear, maxYear) {
+                    let count = 0
+                    for (const listCompany of someArrCompany) {
+                        if(listCompany.graduationYear > minYear && listCompany.graduationYear < maxYear) count++
+                    }
+                    return count
+                }
+                /*кількість сайтів, де сума спонсорських вкладень була більшою за 100000*/
+                function investingMoreThan100000(arr, investment) {
+                    let count = 0
+                    for (const investingMore100000 of arr) {
+                        if(getTotalSum(investingMore100000.sponsors, 'amountSponsorsInvestment')> investment) count++
+                    }
+                    return count
+                }
+                /*створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)*/
+                function listSponsors(arr) {
+                    let sponsorList = []
+                    for (const object of arr) {
+                        for (const sponsors of object.sponsors) {
+                            for (const name in sponsors) {
+                                sponsorList.push(`${name} - ${sponsors[name]}`)
+                            }
+                        }
+                    }
+                    return sponsorList
+                }
+                /*знайти рік, коли прибуток був найбільшим*/
+                function mostProfitableYear(arr) {
+                    let max = 0
+                    for (const site of arr) {
+                        if(site.costSite > max) max = site.costSite
+                    }
+                    return max
+                }
+                /*упорядкувати список за спаданням прибутку*/
+                function sortProfitable(arr) {
+                    arr.sort((profit1,profit2) => profit2.costSite - profit1.costSite)
+                    console.log(arr)
+                }
+                /*Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000*/
+                let costSiteLess10000 = JSON.parse(JSON.stringify(arrCompany.filter((site) => site.costSite < 10000)))
+                let costSiteMore10000 = JSON.parse(JSON.stringify(arrCompany.filter((site) => site.costSite > 10000)))
+                //виведення
+                document.write(`
+                Знайти:<br>
+                1) загальну вартість усіх сайтів: ${totalCostSite}<br>
+                2) кількість сайтів, що було зроблено між 2000 та 2009 рр.: ${developedOverTime(arrCompany, 2000, 2009)}<br>
+                3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${investingMoreThan100000(arrCompany, 100000)}<br>
+                4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив):<br>
+                `)
+                for(let i = 0; i<listSponsors(arrCompany).length; i++){
+                    document.write(`${listSponsors(arrCompany)[i]}<br>`)
+                }
+                document.write(`
+                5) знайти рік, коли прибуток був найбільшим: ${mostProfitableYear(arrCompany)}<br>
+                6) упорядкувати список за спаданням прибутку(вивів у консоль)
+                ${sortProfitable(arrCompany)}<br>
+                7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000:<br>
+                Вартість менша за 10000:(виведено у консоль) ${console.log(costSiteLess10000)}
+                Вартість більша за 10000:(виведено у консоль) ${console.log(costSiteMore10000)}
+                `)
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task1.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=user.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</h2>
+        <div class="wrapper__result">
+            <script>
+                
+                //введення
+                let currentDate = {
+                    currentDay : 10,
+                    currentMonth : 6,
+                    currentYear : 2002
+                }
+                const addMonth = parseInt(prompt('Введіть кількість місяців яку бажаєте додати:'))
+                /*------------------------------------------------------------*/
+                //обчислення
+                function dateCalculation(object, add) {
+                    let newDate = {...object}
+                    newDate.currentYear += Math.floor((newDate.currentMonth + add) / 12)
+                    newDate.currentMonth = (newDate.currentMonth + add) % 12
+                    return newDate
+                }
+                //виведення
+                let res = dateCalculation(currentDate, addMonth)
+                document.write(`
+                Початкова дата: ${currentDate.currentDay}/${currentDate.currentMonth}/${currentDate.currentYear}<br>
+                Після додавання місяця/ців
+                ${res.currentDay}/${res.currentMonth}/${res.currentYear}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    <footer class="footer">
+    </footer>
+    
+</body>
+</html>
