@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=user.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Розробити клас MultChecker для перевірки таблиці множення.</h2>
+        <div class="wrapper__result">
+            <script>
+//      Поля
+//      Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7) - number
+//      Кількість правильних відповідей - correctAnswers
+//      Кількість неправильних відповідей - wrongAnswers
+//
+//      Методи
+//      Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+//      Перевірка правильності вказаної відповіді
+//      render - виведення інформації про тестування на екран
+
+
+
+                //введення
+                /*------------------------------------------------------------*/
+                //обчислення
+                class checkingTheMultiplicationTable{
+                    constructor(
+                    numberChecking,
+                    correctAnswersNumber,
+                    wrongAnswersNumber
+                    ){
+                        this.number = numberChecking
+                        this.correctAnswers = 0
+                        this.wrongAnswers = 0
+                    }
+                    /*Методи*/
+                    /*Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)*/
+                    getExercise(){
+                        let continuation = true
+                        do {
+                            const secondNumber = Math.floor(Math.random()*10); 
+                            const userAnswer = parseFloat(prompt(`${this.number} * ${secondNumber}`))
+                            if (userAnswer === this.number * secondNumber) {
+                                alert('Вірно!')
+                                this.correctAnswers++
+                                continuation = confirm('Бажаєте продовжить далі?')
+                            }else {
+                                alert('Не вірно!')
+                                this.wrongAnswers++
+                                continuation = confirm('Бажаєте продовжить далі?')
+                            }
+                        } while (continuation);
+                    }
+                    getbreeding(){
+                        document.write(`
+                        <ul class="wrapper__list list">
+                        <li class="list__item"><p>Кількість правильних відповідей: ${test.correctAnswers}</p></li>
+                        <li class="list__item"><p>Кількість не правильних відповідей: ${test.wrongAnswers}</p></li>
+                        </ul>
+                        `)
+                    }
+                }
+                let test = new checkingTheMultiplicationTable(8)
+                //виведення
+                test.getExercise()
+                test.getbreeding()
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task3.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    
+    </footer>
+    
+</body>
+</html>

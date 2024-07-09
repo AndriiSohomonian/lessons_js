@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=user.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Розробити клас Baner</h2>
+        <div class="wrapper__result">
+            <script>
+//  Поля
+//	Масив об’єктів ( графічних зображень та посилань на сайти)
+
+//  методи
+//  Метод випадкового вибору об’єкта (графічного зображення та посилання)
+//  Метод виведення випадкового банера
+
+
+                //введення
+                class Banner {
+                    constructor(banners){
+                        this.banners = banners
+                    }
+                    /*методи*/
+                    /*Метод випадкового вибору об’єкта (графічного зображення та посилання)*/
+                    getRandomObj() {
+                        return Math.floor(Math.random()*(this.banners.length))
+                    }
+                    /*Метод виведення випадкового банера*/
+                    toString(){
+                        let randomNumber = this.getRandomObj()
+                        return `
+                        <div>
+                            <a href = "${this.banners[randomNumber].link}">
+                                <img src = "../img/${this.banners[randomNumber].image}" alt="image"
+                            </a>
+                        </div>
+                        `
+                    }
+                }
+
+                let listBanners = [
+                    {
+                        image : 'apple.jpg',
+                        link : 'https://www.apple.com',
+                    },
+                    {
+                        image :'samsung.png' ,
+                        link : 'https://www.samsung.com/us/',
+                    },
+                    {
+                        image :'playstation.png' ,
+                        link : 'https://www.playstation.com/en-ca/',
+                    },
+                    {
+                        image : 'xbox.jpg',
+                        link :'https://www.xbox.com/en-US?xr=mebarnav',
+                    },
+                ]
+
+                let banner = new Banner(listBanners)
+                /*------------------------------------------------------------*/
+                //обчислення
+                
+                //виведення
+                document.write(banner)
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    
+    </footer>
+    
+</body>
+</html>

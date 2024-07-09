@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</h2>
+        <div class="wrapper__result">
+            <script>
+                //введення
+                    const userShot = parseInt(prompt('Введіть ячейку в яку хочете влучити: (від 1 до 6)'))
+                // обчислення
+                let shootingGallery = {
+                    fieldWithBunnies : [0,1,0,1,0,0],
+                    shotToBunnies : function(userShot){
+                        let res = ' '
+                        if(this.fieldWithBunnies[userShot-1]===1){
+                            res = 'Влучили!'
+                            this.fieldWithBunnies[userShot-1] = 'Клітинка з зацем в якого ви влучили'
+                        }else res = 'Не влучили!'
+                        return res
+                    },
+                    resultShot : function(){
+                        return this.fieldWithBunnies
+                    }
+                }
+                //виведення
+                alert(shootingGallery.shotToBunnies(userShot))
+                document.write(`ячейки тиру після пострілу: ${shootingGallery.resultShot()}`)
+            </script>
+        </div>
+        <a class="link__back" href="./task1.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

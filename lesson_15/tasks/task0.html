@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №0</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+            Використати обидва методи стосовно обидвох об’єктів (використати call, apply)</h2>
+        <div class="wrapper__result">
+            <script>
+                //ф-ція
+                
+                //введення
+                    
+
+                // обчислення
+                let obj1 = {
+                        arr : [22,5,15,70,45],
+                        sum : function () {
+                            return this.arr.reduce(
+                                (prewSum, el) => prewSum+el,
+                                0
+                            )
+                        }
+                    }
+                let obj2 = {
+                        arr : [36,7,3,84,12,90],
+                        product : function (min, max) {
+                            return this.arr.reduce(
+                                (prewSum, el) => (
+                                    el>min && el<max ? prewSum*el : prewSum 
+                                ),
+                                1
+                            )
+                    }
+                }
+                function getMinMaxEl(obj) {
+                    let arrMinMax = []
+                    let min = 0
+                    let max = 0
+                    min = Math.min(...obj.arr)
+                    max = Math.max(...obj.arr)
+                    arrMinMax.push(min)
+                    arrMinMax.push(max)
+                    return arrMinMax
+                }
+
+                const s1 = obj1.sum()
+                const s2 = obj1.sum.call(obj2)
+                const s3 = obj2.product.apply(obj1,[getMinMaxEl(obj1)[0],getMinMaxEl(obj1)[1]])
+                const s4 = obj2.product(getMinMaxEl(obj2)[0],getMinMaxEl(obj2)[1])
+                //виведення
+                document.write(`
+                Сума елементів першого об'єкту: ${s1}<br>
+                Сума елементів другого об'єкту: ${s2}<br>
+                Добуток елементів першого об'єкту: ${s3}<br>
+                Добуток елементів другого об'єкту: ${s4}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task0.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=user.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Розробити клас Baner</h2>
+        <div class="wrapper__result">
+            <script>
+//      Поля	
+//      Масив імен хлопців
+//      Масив імен дівчат
+//
+//      Методи	
+//      Метод випадкового вибору імені хлопця
+//      Метод випадкового вибору імені дівчини
+//      Метод виведення пари для танців
+//      Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+                //введення
+                const boysNames = ["Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas", "Henry", "Alexander"];
+                const girlsNames = ["Olivia", "Emma", "Ava", "Charlotte", "Sophia", "Amelia", "Isabella", "Mia", "Evelyn", "Harper"];
+                class Pairs {
+                    constructor(boysArr, girlsArr){
+                        this.boys = boysArr,
+                        this.girls = girlsArr
+                    }
+                    /*методи*/
+                    /*Метод випадкового вибору імені хлопця*/
+                    getRandomBoy(){
+                        let randomBoy = Math.floor(Math.random()*this.boys.length)
+                        return this.boys[randomBoy]
+                    }
+                    /*Метод випадкового вибору імені дівчини*/
+                    getRandomGirl(){
+                        let randomGirl = Math.floor(Math.random()*this.girls.length)
+                        return this.girls[randomGirl]
+                    }
+                    /*Метод виведення пари для танців*/
+                    showPair(){
+                        alert(`${this.getRandomBoy()} та ${this.getRandomGirl()} `)
+                    }
+                    /*Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців*/
+                    getRunPair(){
+                        this.showPair()
+                        setTimeout(
+                            ()=>{
+                                this.getRunPair()
+                            },5000
+                        )
+                    }
+                }
+
+                    
+                    let pair = new Pairs(boysNames, girlsNames)
+                /*------------------------------------------------------------*/
+                //обчислення
+                
+                //виведення
+                pair.getRunPair()
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task5.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    
+    </footer>
+    
+</body>
+</html>

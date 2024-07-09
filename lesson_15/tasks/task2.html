@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=user.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити об’єкт «Авто».</h2>
+        <div class="wrapper__result">
+            <script>
+    // Авто		
+    // Поля(властивості):
+    //	
+    // Марка - brand
+    // Розмір бака - tankSize
+    // Кількість наявних літрів - numberfillLitersAvailable
+    // Кількість місць - numberOfSeats
+    // Кількість пасажирів - numberOfPassengers
+
+    // Методи (дії):
+    //
+    // Заправка на вказану кількість літрів
+    // Виведення кількості пасажирів
+    // Додавання пасажирів
+    // Висадка пасажирів
+
+                //введення
+                
+                class auto{
+                    constructor(
+                        brandCar,
+                        tankSizeCar,
+                        numberLitersAvailableCar,
+                        numberOfSeatsCar,
+                        numberOfPassengersCar
+                    ){
+                        this.brand = brandCar
+                        this.tankSize = tankSizeCar
+                        this.numberLitersAvailable = numberLitersAvailableCar
+                        this.numberOfSeats = numberOfSeatsCar
+                        this.numberOfPassengers = numberOfPassengersCar
+                    }
+                    /*методи*/
+                    /*Заправка на вказану кількість літрів*/
+                    carRefueling() {
+                        const fillLiters = parseFloat(prompt(`Введіть на скільки літрів бажаєте заправити ${this.brand}:`))
+                        if (fillLiters+this.numberfillLitersAvailable>this.tankSize) {
+                            let addfillLiters = this.tankSize - this.numberfillLitersAvailable
+                            alert(`Авто буде заправлене на: ${addfillLiters} літрів, так як бак ${this.brand} на ${this.tankSize} літрів.`)
+                            this.numberfillLitersAvailable += addfillLiters
+                        }else{
+                            alert(`Авто ${this.brand} заправлено на ${fillLiters}L`)
+                            this.numberfillLitersAvailable += fillLiters
+                        } 
+                        return this.numberfillLitersAvailable
+                    }
+                    /*Виведення кількості пасажирів*/
+                    getPassengersInTheCar(){
+                        return this.numberOfPassengers
+                    }
+                    /*Додавання пасажирів*/
+                    getAddPassengers(){
+                        const addPassengers = parseInt(prompt(`Введіть скільки пасажирів додати в авто ${this.brand}:`))
+                        if (addPassengers + this.numberOfPassengers > this.numberOfSeats) {
+                            let possibleToSeat = this.numberOfSeats - this.numberOfPassengers
+                            alert(`Неможливо посадити ${addPassengers} пасажирів в ${this.brand}, так як в авто знаходиться ${this.numberOfPassengers} пасажирів, а авто розраховане на ${this.numberOfSeats}, тому можливо посадити тільки ${possibleToSeat} пасажирів `)
+                            this.numberOfPassengers += possibleToSeat
+                        }else {
+                            alert(`В ${this.brand} сіло ${addPassengers} пасажирів`)
+                            this.numberOfPassengers += addPassengers
+                        }
+                        return this.numberOfPassengers
+                    }
+                    /*Висадка пасажирів*/
+                    getDisembarkingPassengers (){
+                        const disembarkingPassengers = parseInt(prompt(`Введіть скільки пасажирів висадити з ${this.brand}:`))
+                        if(disembarkingPassengers>this.numberOfPassengers){
+                            alert('Висаджені всі пасажири!')
+                            this.numberOfPassengers = 0
+                        }else {
+                            this.numberOfPassengers -= disembarkingPassengers
+                            alert(`В авто залишилось ${this.numberOfPassengers} пасажирів.`)
+                        }
+                        return this.numberOfPassengers
+                    }
+                }
+                let car = new auto('bmw', 50, 15, 4, 2 )
+                
+                /*------------------------------------------------------------*/
+                //обчислення
+                
+                //виведення
+                document.write(`
+                Після заправки, в баку ${car.brand} ${car.carRefueling()} літрів<br>
+                Кількість пасажирів в ${car.brand}: ${car.getPassengersInTheCar()}<br>
+                В авто знаходиться ${car.getAddPassengers()} пасажирів<br>
+                Після висадки пасажирів, в авто залишилось ${car.getDisembarkingPassengers()} пасажирів
+                `)
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    
+    </footer>
+    
+</body>
+</html>
