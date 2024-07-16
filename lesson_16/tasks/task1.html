@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та виведення дати реалізувати за допомогою методу  toString.</h2>
+        <div class="wrapper__result">
+            <script>
+                class TDate {
+                    #day
+                    //---
+                    get Day(){
+                        return this.#day
+                    }
+                    set Day(newDay){
+                        if (newDay < 0 || newDay > 31) throw new Error('Введений некоректний день!')
+                        this.#day = newDay
+                    }
+
+                    #month
+                    //---
+                    get Month(){
+                        return this.#month
+                    }
+                    set Month(newMonth){
+                        if(newMonth < 0 || newMonth > 12) throw new Error('Введений некоректний місяць!')
+                        this.#month = newMonth
+                    }
+
+                    #year
+                    //---
+                    get Year(){
+                        return this.#year
+                    }
+                    set Year(newYear){
+                        if(newYear <= 0 ) throw new Error('Введений некоректний рік!')
+                        this.#year = newYear
+                    }
+
+
+                    constructor(userDay, userMonth, userYear){
+                        this.Day = userDay
+                        this.Month = userMonth
+                        this.Year = userYear
+                    }
+                    // збільшення дня 
+                    increasingDay (day){
+                        let totalDays = this.Day + day
+                        if(totalDays > 31) {
+                            this.Day = totalDays % 31
+                            this.increasingMonth(Math.floor(totalDays/31))
+                            if (this.Day === 0) this.Day = 1
+                        }
+                        else this.Day = totalDays
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    //зменшення дня
+                    diminishingDay(day){
+                        let totalDays = this.Day - day
+                        if(totalDays<=0){
+                            this.Day = 31 - (totalDays % 31) * -1
+                            this.diminishingMonth(Math.floor(totalDays/31)*-1)
+                        }else this.Day = totalDays
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    //збільшення місяцю
+                    increasingMonth (month){
+                        let totalMonth = this.Month + month
+                        if(totalMonth > 12){
+                            this.Month = totalMonth % 12
+                            this.increasingYear(Math.floor(totalMonth/12))
+                            if (this.Month === 0) this.Month = 1
+                        }else this.Month = totalMonth
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    //зменшення місяцю
+                    diminishingMonth(month){
+                        let totalMonth = this.Month - month
+                        if(totalMonth<=0){
+                            this.Month = 12 - (totalMonth % 12) * -1
+                            this.diminishingYear(Math.floor(totalMonth/12)*-1)
+                        }else this.Month = totalMonth
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    //збільшення року
+                    increasingYear (year){
+                        this.Year += year
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    //зменшення року
+                    diminishingYear(year){
+                        this.Year -= year
+                        return `${this.Day}.${this.Month}.${this.Year}`
+                    }
+                    
+                    toString(){
+                        return `Початкова дата: ${this.Day}.${this.Month}.${this.Year}<br>
+                        Дата після додавання днів: ${this.increasingDay (addDays)}<br>
+                        Дата після віднімання днів: ${this.diminishingDay(subtractDays)}<br>
+                        Дата після збільшення місяців: ${this.increasingMonth (addMonth)}<br>
+                        Дата після зменшення місяців: ${this.diminishingMonth(subtractMonth)}<br>
+                        Дата після збільшення років: ${this.increasingYear (addYear)}<br>
+                        Дата після зменшення років: ${this.diminishingYear (subtractYear)}<br>
+                        `
+                    }
+                }
+                let res = new TDate(31,10,2024)
+                let addDays = parseInt(prompt('Введіть кількість днів на яку бажаєте збільшити:'))
+                let subtractDays = parseInt(prompt('Введіть кількість днів на яку бажаєте зменьшити:'))
+                let addMonth = parseInt(prompt('Введіть кількість місяців на яку бажаєте збільшити:'))
+                let subtractMonth = parseInt(prompt('Введіть кількість місяців на яку бажаєте зменьшити:'))
+                let addYear = parseInt(prompt('Введіть кількість років на яку бажаєте збільшити:'))
+                let subtractYear= parseInt(prompt('Введіть кількість років на яку бажаєте зменьшити:'))
+
+                
+                //виведення
+                document.write(res)
+            </script>
+        </div>
+        <a class="link__back" href="./task1.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

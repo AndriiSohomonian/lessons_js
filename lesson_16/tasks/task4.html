@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.</h2>
+        <div class="wrapper__result">
+            <script>
+                /*
+                клас TBankomat
+                поля
+                - зберігання кількості купюр кожного із номіналів + 
+
+                методи
+                - знаходження максимальної суми + 
+                - знаходження мінімальної суми + 
+                - метод зняття деякої суми 
+                */
+                class TBankomat{
+                    constructor(bills){
+                        this.BillsList = bills
+                    }
+                    getMaxSum(){
+                        let totalSum = this.BillsList.reduce(
+                            (prewSum, el) => prewSum + el.Bills * el.Number, 0
+                        )
+                        return totalSum
+                    }
+                    getMinSum(){
+                        let minSum = this.BillsList.reduce(
+                            (prewSum, el) => el.Bills < prewSum && el.Number > 0 ? el.Bills : prewSum , Infinity
+                        )
+                        return isFinite(minSum) ? minSum : 0
+                    }
+                    getMoney(userMoney){
+                        do {
+                            let prewUserMoney = userMoney
+                            for(let i =0; i < this.BillsList.length && userMoney > 0; i++ ){
+                                let countDenomination = 0
+                                let denomination = this.BillsList[i]
+                                countDenomination = Math.floor(userMoney/denomination.Bills)
+                                if(countDenomination > denomination.Number){
+                                    userMoney -= denomination.Number * denomination.Bills
+                                    denomination.Number = 0
+                                }else{
+                                    userMoney -= denomination.Bills * countDenomination
+                                    denomination.Number -= countDenomination
+                                }
+                            }
+                            if(userMoney === prewUserMoney){
+                                return `неможливе`
+                                break
+                            }
+                        } while (userMoney !=0);
+                        return 'успішне'
+                    }
+                    
+                }
+                class TBBills{
+                    #bills
+                    get Bills(){
+                        return this.#bills
+                    }
+                    set Bills(newBils){
+                        if(newBils !== 1 && newBils !== 2 && newBils !== 5 && newBils !== 10 &&newBils !== 20 &&newBils !== 50 &&newBils !== 100 &&newBils !== 200) throw new Error('Такої купюри не існує')
+                        this.#bills = newBils
+                    }
+                    #number
+                    get Number(){
+                        return this.#number
+                    }
+                    set Number(newNumber){
+                        if(newNumber<0) throw new Error ('Не може бути відє`мної кількості')
+                        this.#number = newNumber
+                    }
+                    constructor(bill, number){
+                        this.Bills = bill
+                        this.Number = number
+                    }
+                    toString(){
+                        return `${this.Bills} - ${this.Number}<br>`
+                    }
+                }
+                //виведення
+                let billList = [
+                    new TBBills(200,8),
+                    new TBBills(100,7),
+                    new TBBills(50,6),
+                    new TBBills(20,5),
+                    new TBBills(10,4),
+                    new TBBills(5,3),
+                    new TBBills(2,2),
+                    new TBBills(1,1),
+                ]
+                let atm = new TBankomat(billList)
+                const money = parseFloat(prompt('Введіть суму, яку бажаєте зняти:'))
+                document.write(`Банкноти в банкоматі:<br>
+                ${billList}<br>
+                Максимальна сума в банкоматі: ${atm.getMaxSum(billList)}<br>
+                Мінімальна сума в банкоматі: ${atm.getMinSum(billList)}<br>
+                Виведення грошей: ${atm.getMoney(money)} ${money}грн!<br>
+                ${billList}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>
