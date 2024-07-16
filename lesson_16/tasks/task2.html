@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.</h2>
+        <div class="wrapper__result">
+            <script>
+                'use strict'
+                // uan(кількість грошей користувача) , usd(кількість грошей користувача у доларах) , exchangeRate(курс валюти)
+                class TMoney{
+                    #userUan
+                    #exchangeRate
+                    #addingMoney
+                    #withdrawingMoney
+                    
+                    constructor(userMoney, addMoney, withdraw){
+                        this.UserUan = userMoney
+                        this.#exchangeRate = 39
+                        this.AddingMoney = addMoney
+                        this.WithdrawingMoney = withdraw
+                    }
+                    //зняття грошей
+                    set WithdrawingMoney(withdraw){
+                        if(withdraw<0 || withdraw>this.UserUan) throw new Error ('Зняття грошей неможливо!')
+                        this.UserUan -= withdraw
+                    }
+                    //гроші користувача на рахунку в гривнях
+                    get UserUan(){
+                        return this.#userUan
+                    }
+                    set UserUan(money){
+                        if(money<0) throw new Error('Неможливий обмін, потрібно ввести суму!')
+                        this.#userUan = money
+                    }
+                    //курс обміну валюти гривіні до долара
+                    get ExchangeRate() {
+                        return this.#exchangeRate
+                    }
+                    //гроші які користувач додає на рахунок
+                    get AddingMoney(){
+                        return this.#addingMoney
+                    }
+                    set AddingMoney(add){
+                        if(add<=0) throw new Error ('Поповнення рахунку неможливо, введене не коректне число!')
+                        this.UserUan += add
+                    }
+                    // гроші користувача в доларах переведені по курсу долара
+                    get UserMoneyInDollar(){
+                        return this.UserUan / this.#exchangeRate
+                    }
+                    // курс переведення з долара в гривню 
+                    get ExchangeRateDollarToUan (){
+                        let rate = (this.UserUan+100) / this.UserMoneyInDollar
+                        return rate
+                    }
+
+                    toString(){
+                        return `Кількість грошей користувача в гривнях: ${this.UserUan}<br>
+                        Курс гривні до долара: ${this.ExchangeRate}<br>
+                        Гроші користувача в доларах: ${this.UserMoneyInDollar.toFixed(2)}<br>
+                        Курс долара до гривні: ${this.ExchangeRateDollarToUan.toFixed(2)} <br>
+
+                        `
+                    }
+                }
+                const addSum = parseFloat(prompt('Введіть суму на яку бажаєте поповнити рахунок:'))
+                const withdrawSum = parseFloat(prompt('Введіть суму на яку бажаєте зняти з рахунку:'))
+                let user1 = new TMoney (25000, addSum, withdrawSum)
+                document.write(user1)
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>
