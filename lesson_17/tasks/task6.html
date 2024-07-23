@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №6</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №6</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає історію тестування у масиві у вигляді об'єктів,<br> 
+            Приклад.<br>
+            testsList= [<br>
+            {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},<br>
+            {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},<br>
+            ]<br>
+            Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля. 
+            Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History.  Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.</h2>
+        <div class="wrapper__result">
+            <script>
+                /*
+                класи:
+                - MultChecker для перевірки таблиці множення+++    || надсилається у Hystory 
+                - AddChecker для перевірки додавання+++            ||
+                - Hystory зберігає історію тестування у масиві у вигляді об'єктів+-
+                - TestData описує один такий тест++
+                - TestManager -за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування.   тільки ки один об'єкт
+                */
+                // генерація рандомного числа
+                function getRandomNumber(min = 1, max = 10){
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                //клас зберігання відповідей
+                class Hystory{
+                    constructor(){
+                        this.historyList = []
+                    }
+                    addRow(row){
+                        this.historyList.push(row)
+                    }
+                    toDisplay(){
+                        this.historyList.forEach(
+                            (row)=> {
+                                document.write(row)
+                            }
+                        )
+                    }
+                    toString(){
+                        return`
+                        ${this.toDisplay()}
+                        `
+                    }
+                }
+                //створення прикладу множення
+                class MultChecker{
+                    generateTeat(){
+                        const number1 = getRandomNumber()
+                        const number2 = getRandomNumber()
+                        return {
+                            number1,
+                            number2,
+                            operation : '*',
+                            userAnsver : null,
+                            corectAnsver : number1 * number2
+                        }
+                    }
+                }
+                // створення прикладу додавання
+                class AddChecker{
+                    generateTeat(){
+                        const number1 = getRandomNumber()
+                        const number2 = getRandomNumber()
+                        return {
+                            number1,
+                            number2,
+                            operation : '+',
+                            userAnsver : null,
+                            corectAnsver : number1 + number2
+                        }
+                    }
+                }
+                class TestData{
+                    constructor(num1, num2, op, usAn, corAn){
+                        this.number1 = num1
+                        this.number2 = num2
+                        this.operation = op
+                        this.userAnsver = usAn
+                        this.corectAnsver = corAn
+                    }
+                    toString(){
+                        return`перше число: ${this.number1} , друге число: ${this.number2} , оператор: ${this.operation} , відповідь користувача: ${this.userAnsver} , правильна відповідь: ${this.corectAnsver}<br>`
+                    }
+
+                }
+                // створення задач
+                class TestManager{
+                    constructor(){
+                        if(!TestManager.instance){
+                            TestManager.instance = this
+                            this.hystory = new Hystory()
+                        }return TestManager.instance
+                    }
+                    getTest(){
+                        let makeTest
+                        if(getRandomNumber(1,2)===1) makeTest = new MultChecker()
+                        else makeTest = new AddChecker()
+                        return makeTest
+                        
+                    }
+                    getStartTest(number){
+                        let test
+                        let saveAnswer
+                        for(let i = 0; i<number; i++){
+                            test = this.getTest().generateTeat()
+                            test.userAnsver = parseInt(prompt(`${test.number1} ${test.operation} ${test.number2}`))
+                            saveAnswer = new TestData(test.number1, test.number2, test.operation, test.userAnsver, test.corectAnsver)
+                            this.hystory.addRow(saveAnswer)
+                            if(test.userAnsver === test.corectAnsver) alert('Вірно!')
+                            else alert('Не вірно!')
+                        }
+                    }
+                }
+                const repeat = parseInt(prompt('Скільки прикладів бажаєте розв`язати? '))
+                const test = new TestManager()
+                test.getStartTest(repeat)
+                test.hystory.toString()
+            </script>
+        </div>
+        <a class="link__back" href="./task6.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

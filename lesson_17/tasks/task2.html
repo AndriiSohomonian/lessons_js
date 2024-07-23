@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити службове авто (водій, марка,номер ). Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.</h2>
+        <div class="wrapper__result">
+            <script>
+                /*
+                клас службове авто
+                поле 
+                -водій
+                -марка
+                -номер
+                */
+
+                class ServiceCar{
+                    static serviceCar
+                    constructor(driver, brand, number){
+                        if(ServiceCar.serviceCar) return ServiceCar.serviceCar
+                        this.driver = driver
+                        this.brand = brand
+                        this.number = number
+                        ServiceCar.serviceCar = this
+                    }
+
+                    toString(){
+                        return `Водій:${this.driver}<br>${this.brand}<br>${this.number}`
+                    }
+                }
+                let driver1 = new ServiceCar('Максим', 'BMW', 'AN4256BH')
+                let driver2 = new ServiceCar('Петро', 'Mercedes', 'AN7634BH')
+                document.write(`Перший водій: ${driver1}<br>
+                Другий водій: ${driver2}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

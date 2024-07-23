@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)</h2>
+        <div class="wrapper__result">
+            <script>
+                /*
+                Властивості 
+                - масив
+                
+                методи 
+                - знаходження кількості додатніх
+                - знаходження кількості від'ємних 
+                - кількість входжень деякого числа
+                */
+                class GetArr{
+                    #arr
+                    get Arr(){
+                        return this.#arr
+                    }
+                    set Arr(newArr){
+                        if(newArr.length === 0 ) throw new Error('Масив не може бути порожнім!')
+                        return this.#arr = newArr
+                    }
+                    constructor(...array){
+                        this.Arr = array
+                    }
+                    toString(){
+                        return`<br>Масив: ${this.Arr}<br>
+                        Кількість додатніх елементів: ${OperationsArr.findingPositive(r1.Arr)}<br>
+                        Кількість від'ємних елементів: ${OperationsArr.findingNegatives(r1.Arr)}<br>
+                        Кількість входжень деякого числа: ${OperationsArr.contNumber(r1.Arr)}<br>
+                        `
+                    }
+                }
+                
+                class OperationsArr{
+                    static findingPositive(arr){
+                        return arr.reduce(
+                            (count, el)  => el > 0 ? count + 1 : count,0 
+                        )
+                    }
+                    static findingNegatives(arr){
+                        return arr.reduce(
+                            (count, el)  => el < 0 ? count + 1 : count,0
+                        )
+                    }
+                    static contNumber(arr){
+                        return arr.reduce(
+                            (count, el) => el===4 ? count + 1 : count, 0
+                        )
+                    }
+                }
+
+                const array = [1,2,3,4,4,4,-5,3,-2]
+                let r1 = new GetArr(...array)
+                document.write`${r1}<br>
+                `
+            </script>
+        </div>
+        <a class="link__back" href="./task1.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

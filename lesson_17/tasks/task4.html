@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми</h2>
+        <div class="wrapper__result">
+            <script>
+                /*
+                - назва товару,++
+                - одиниця виміру,++
+                - кількість,++
+                - фірма виробник (назва, реєстраційний номер)++
+                */
+            class ManufacturerCompany{
+                #nameManufacturerCompany
+                get NameManufacturerCompany(){
+                    return this.#nameManufacturerCompany
+                }
+                set NameManufacturerCompany(newNameManufacturerCompany){
+                    if(newNameManufacturerCompany.length ===0) throw new Error('Відсутня назва фірми')
+                    this.#nameManufacturerCompany = newNameManufacturerCompany
+                }
+
+                #numberManufacturerCompany
+                get NumberManufacturerCompany(){
+                    return this.#numberManufacturerCompany
+                }
+                set NumberManufacturerCompany(newNumberManufacturerCompany){
+                    if(newNumberManufacturerCompany.length===0) throw new Error('Відсутній номер фірми')
+                    this.#numberManufacturerCompany = newNumberManufacturerCompany
+                }
+
+                constructor(name, number){
+                    this.NameManufacturerCompany = name
+                    this.NumberManufacturerCompany = number
+                }
+            }
+            class BaseOfGoods{
+                #productName
+                get ProductName(){
+                    return this.#productName
+                }
+                set ProductName(newProduct){
+                    if(newProduct.length === 0) throw new Error ('Товар має містити назву')
+                    this.#productName = newProduct
+                }
+                #unit
+                get Unit(){
+                    return this.#unit
+                }
+                set Unit(newUnit){
+                    if(newUnit.length === 0) throw new Error ('Не введена одиниця виміру')
+                    this.#unit = newUnit
+                }
+                #number
+                get Number(){
+                    return this.#number
+                }
+                set Number(newNumber){
+                    if(newNumber.length === 0) throw new Error ('Не введена кількість товару')
+                    this.#number = newNumber
+                }
+
+                constructor(productName, unit, number, nameCompany, numberCompany){
+                    this.ProductName = productName
+                    this.Unit = unit
+                    this.Number = number
+                    this.manufacturerCompany = new ManufacturerCompany(nameCompany, numberCompany)
+                }
+
+                toString(){
+                    return`Назва товару:${this.ProductName}<br>
+                    Одиниця виміру: ${this.Unit}<br>
+                    Кількість товару: ${this.Number}<br>
+                    фірма: ${this.manufacturerCompany.NameManufacturerCompany}<br>
+                    Реєстраційний номер фірми: ${this.manufacturerCompany.NumberManufacturerCompany}<br><br>
+                    `
+                }
+            }
+            class Storage{
+                constructor(){
+                    this.product = []
+                }
+                addProduct(newProduct){
+                    this.product.push(newProduct)
+                }
+                shipmentOfGoods(typeProduct ,weight){
+                    if (typeProduct.Number - weight < 0) throw new Error('На складі немає стільки товару')
+                    return typeProduct.Number -= weight
+                }
+                filteringByProductName(name){
+                    return this.product.filter(
+                        (item) => item.ProductName === name
+                    )
+                }
+                filteringByCompanyName(name){
+                    return this.product.filter(
+                        (item) => item.manufacturerCompany.NameManufacturerCompany === name
+                    )
+                }
+                toString(){
+                    return`
+                    ${this.product}
+                    
+                    `
+                }
+            }
+            let product1 = new BaseOfGoods('Яблуко', 'кг', 5, 'Райский сад', 4654)
+            let product2 = new BaseOfGoods('Банан', 'кг', 13, 'Райский сад', 2541)
+            let product3 = new BaseOfGoods('Кавун', 'кг', 120, 'Поляна', 9856)
+            let storage = new Storage()
+            storage.addProduct(product1)
+            storage.addProduct(product2)
+            storage.addProduct(product3)
+            storage.shipmentOfGoods(product2, 3)
+            let search1 = storage.filteringByProductName('Банан')
+            let search2 = storage.filteringByCompanyName('Поляна')
+            document.write(`Список товарів на складі:<br><br>
+            ${storage}<br>
+            Результат пошуку за назвою:<br> ${search1}<br>
+            Результат пошуку за назвою фірми:<br> ${search2}<br>
+
+            `)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

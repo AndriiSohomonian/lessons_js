@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та  вибір книг за назвою, за ПІБ автора, за видавництвом.</h2>
+        <div class="wrapper__result">
+            <script>
+                //Видавництво
+                class PublishingHouse{
+                    #name
+                    get Name(){
+                        return this.#name
+                    }
+                    set Name(newName){
+                        if(newName.length === 0) throw new Error('відсутня назва видавництва')
+                        this.#name = newName
+                    }
+                    #registrationNumber
+                    get RegistrationNumber(){
+                        return this.#registrationNumber
+                    }
+                    set RegistrationNumber(newRegistrationNumber){
+                        if(newRegistrationNumber.length === 0) throw new Error('відсутній реєстраційний номер')
+                        this.#registrationNumber = newRegistrationNumber
+                    }
+                    #yearOfIntroduction
+                    get YearOfIntroduction(){
+                        return this.#yearOfIntroduction
+                    }
+                    set YearOfIntroduction(newYearOfIntroduction){
+                        if(newYearOfIntroduction.length === 0) throw new Error('відсутній рік заснування')
+                        this.#yearOfIntroduction = newYearOfIntroduction
+                    }
+                    constructor(name,registrationNumber, year){
+                        this.Name = name
+                        this.RegistrationNumber = registrationNumber
+                        this.YearOfIntroduction = year
+                    }
+
+                    toString(){
+                        return`
+                        Назва видавництва: ${this.Name}<br>
+                        Реєстраційний номер: ${this.RegistrationNumber}<br>
+                        Рік заснування: ${this.YearOfIntroduction}
+                        `
+                    }
+                }
+                //автор
+                class Author {
+                    #name
+                    get Name(){
+                        return this.#name
+                    }
+                    set Name(newName){
+                        if(newName.length === 0) throw new Error('Відсутній автор книги')
+                        this.#name = newName
+                    }
+                    #yearOfBirth
+                    get YearOfBirth(){
+                        return this.#yearOfBirth
+                    }
+                    set YearOfBirth(newYearOfBirth){
+                        if(newYearOfBirth.length === 0 || newYearOfBirth > 2024) throw new Error('Введений некоректний рік')
+                        this.#yearOfBirth = newYearOfBirth
+                    }
+                    #briefDescription
+                    get BriefDescription(){
+                        return this.#briefDescription
+                    }
+                    set BriefDescription(newBriefDescription){
+                        if(newBriefDescription.length === 0) throw new Error('Відсутній опис автора')
+                        this.#briefDescription = newBriefDescription
+                    }
+
+                    constructor(name, yearOfBirth, briefDescription){
+                        this.Name = name
+                        this.YearOfBirth = yearOfBirth
+                        this.BriefDescription = briefDescription
+                    }
+
+                    toString(){
+                        return`<br>
+                        Автор книги: ${this.Name}<br>
+                        Рік народження: ${this.YearOfBirth}<br>
+                        короткий опис автора: ${this.BriefDescription}
+                        `
+                    }
+                }
+                //вся інформація про книгу
+                class BookData{
+                    #nameBook
+                    get NameBook(){
+                        return this.#nameBook
+                    }
+                    set NameBook(newNameBook){
+                        if(newNameBook.length === 0) throw new Error('Немає назви книги')
+                        this.#nameBook = newNameBook
+                    }
+                    #genre
+                    get Genre(){
+                        return this.#genre
+                    }
+                    set Genre(newGenre){
+                        if(newGenre.length === 0) throw new Error('Відсутній жанр книги')
+                        this.#genre = newGenre
+                    }
+                    #originOfTheBook
+                    get OriginOfTheBook(){
+                        return this.#originOfTheBook
+                    }
+                    set OriginOfTheBook(newOriginOfTheBook){
+                        if(newOriginOfTheBook.length === 0) throw new Error('Відсутня інформація походження книги')
+                        this.#originOfTheBook = newOriginOfTheBook
+                    }
+                    #availability
+                    get Availability(){
+                        return this.#availability
+                    }
+                    set Availability(newAvailability){
+                        if(newAvailability.length === 0) throw new Error('Відсутня інформація про наявність книги')
+                        this.#availability = newAvailability
+                    }
+                    constructor(/**/nameAuthor, yearOfBirthAuthor,briefDescription,/**/ publishingHouse, registrationNumber, yearOfIntroduction,/**/ nameBook,/**/genre/**/,originOfTheBook,availability){
+                        this.author = new Author(nameAuthor, yearOfBirthAuthor, briefDescription)
+                        this.publishingHouse = new PublishingHouse(publishingHouse, registrationNumber, yearOfIntroduction)
+                        this.NameBook = nameBook
+                        this.Genre = genre
+                        this.OriginOfTheBook = originOfTheBook
+                        this.Availability = availability
+                    }
+                    toString(){
+                        return`
+                        ${this.author}<br><br>
+                        ${this.publishingHouse}<br><br>
+                        Назва книги: ${this.NameBook}<br>
+                        Жанр твору: ${this.Genre}<br>
+                        `
+                    }
+                }
+                class LibrarySections{
+                    #sections
+                    get Sections(){
+                        return this.#sections
+                    }
+                    set Sections(newSections){
+                        if(newSections.length === 0) throw new Error('Відсутня назва сектору бібліотеки')
+                        this.#sections = newSections
+                    }
+
+                    constructor(nameSections){
+                        this.Sections = nameSections
+                        this.books = []
+                    }
+                    
+                }
+                class Library{
+                    constructor(){
+                        this.fantasy = new LibrarySections('фантастика')
+                        this.drama = new LibrarySections('драма')
+                        this.horrors = new LibrarySections('жахи')
+                    }
+                    addBook(book){
+                        let genre = book.Genre
+                        let result
+                        switch(genre){
+                            case 'фантастика':
+                                this.fantasy.books.push(book)
+                                break
+                            case 'драма':
+                                this.drama.books.push(book)
+                                break
+                            case 'жахи':
+                                this.horrors.books.push(book)
+                                break
+                            default: 
+                                result = 'Немає такої секції книжок'
+                                break
+                        }
+                        return result
+                    }
+                    removeBook(name) {
+                        Object.values(this).forEach(section => {
+                            section.books = section.books.filter(
+                                book => book.NameBook !== name
+                            )
+                        })
+                    }
+                    selectionOfBooksByName(name){
+                    let result = []
+                    Object.values(this).forEach(section => {
+                        section.books.forEach(book => {
+                            if(book.NameBook === name) result.push(name)
+                        })
+                    })
+                    return result
+                    }
+                    bookByAuthorsName(name){
+                        let result = []
+                        Object.values(this).forEach(section => {
+                            section.books.forEach(book => {
+                                    if(book.author.Name === name) result.push(name)
+                            })
+                        })
+                        return result
+                    }
+                    bookByPublisher(name){
+                        let result = []
+                        Object.values(this).forEach(section =>{
+                            section.books.forEach(book => {
+                                if(book.publishingHouse.Name === name) result.push(name)
+                            })
+                        })
+                        return result
+                    }
+                    toString(){
+                        
+                        return `Сектор фантастики:<br>${this.fantasy.books}<br>
+                        Сектор драми:<br> ${this.drama.books}<br>
+                        Сектор жахів:<br> ${this.horrors.books}<br>
+                        `
+                    }
+                }
+
+
+                let BookBySimonenko = new BookData(/**/'Симоненко Василь Андрійович', 1935, 'Талановитий',/**/ 'Книжковий світ', 4321, 1999,/**/'Подорож у країну Навпаки','фантастика','Україна', 'В наявності')
+                let BookByVynnychenko = new BookData(/**/'Винниченко Володимир Кирилович', 1880, 'Активний', /**/'Арт Економі', 2532, 2005,/**/'Співочі товариства','драма', 'Україна', 'В наявності')
+                let bookByKing = new BookData(/**/'Stephen Edwin King', 1947, 'Загадковий',/**/'КСД', 9843, 1976,/**/'Кінець зміни', 'жахи','Америка', 'Недоступна')
+                let library = new Library()
+                library.addBook(BookBySimonenko)
+                library.addBook(BookByVynnychenko)
+                library.addBook(bookByKing)
+                library.removeBook('Подорож у країну Навпаки')
+                let booksByName = library.selectionOfBooksByName('Співочі товариства') 
+                let booksByAuthor = library.bookByAuthorsName('Stephen Edwin King') 
+                let booksByPublisher = library.bookByPublisher('КСД')
+                document.write(`
+                ${library}<br>
+                Книга за назвою: <br>${booksByName}<br>
+                Книга за ПІБ автора:<br> ${booksByAuthor}<br>
+                Книга за назвою видавництва:<br> ${booksByPublisher}
+                `)
+            </script>
+        </div>
+        <a class="link__back" href="./task5.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>
