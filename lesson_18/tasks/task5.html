@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №5</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №5</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)</h2>
+        <div class="wrapper__result">
+            
+            <script>
+                "use strict"
+                function getRandomNumber() {
+                    const randomNumber = Math.floor(Math.random()* 100)
+                    return randomNumber
+                }
+                function creatingATable() {
+                    for (let i = 0; i < 3; i++) {
+                        let row = document.createElement('table')
+                        row.style.cssText = 'font-size: 1.5rem;'
+                        for (let j = 0; j < 4; j++) {
+                            let column = document.createElement('td')
+                            column.style.cssText = 'border: 1px solid red; text-align: center;; width: 60px;'
+                            column.innerText = getRandomNumber()
+                            row.append(column)
+                        }
+                        document.body.append(row)
+                    }
+                }
+                creatingATable()
+            </script>
+        </div>
+    </div>
+    <a class="link__back" href="./task5.html">Cпробувати ще раз</a>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №4</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №4</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)</h2>
+            <script>
+                "use strict"
+                const wishlist = [
+                    "Подорож до Європи",
+                    "Придбати новий ноутбук",
+                    "Навчитися грати на гітарі",
+                    "Записатися на курси програмування",
+                    "Відвідати концерт улюбленої групи",
+                    "Придбати будинок біля моря",
+                    "Навчитися готувати нові страви",
+                    "Зібрати колекцію книг",
+                    "Провести відпустку на екзотичному острові",
+                    "Завести домашнього улюбленця"
+                ];
+
+                function getRandomWish(wishlist) {
+                    const randomNumber = Math.floor(Math.random()*(wishlist.length))
+                    return randomNumber
+                }
+                function getRandomList(wishlist) {
+                    for(let i = 0; i<3; i++){
+                        let randomNumber = getRandomWish(wishlist)
+                        let newDiv = document.createElement('div')
+                        newDiv.innerText= wishlist[randomNumber]
+                        document.body.append(newDiv)
+
+                    }
+                }
+                getRandomList(wishlist)
+            </script>
+        </div>
+        <a class="link__back" href="./task4.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

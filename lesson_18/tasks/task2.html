@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №2</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №2</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Зробити конвертер валют (курси валют – константи у скрипті)</h2>
+        <div class="wrapper__result">
+            <div class="task__container">
+                <div class="input__line">
+                    <h2>Сума в гривнях:</h2>
+                    <input class="task__container num" type="number" id="amountInHryvnias">
+                </div>
+                <div class="operation">
+                    <button onclick="converter()" class="btr">Конвертувати</button>
+                </div>
+                <div class="answer">
+                    Сума в євро: <span id="amountInEuros"></span><br>
+                    Сума в доларах: <span id="amountInDollars"></span>
+                </div>
+            </div>
+            <script>
+                "use strict"
+                const dollarRate = 0.024;
+                const euroRate = 0.022;
+
+                
+                function converter() {
+                    const userMoney = parseFloat(document.getElementById("amountInHryvnias").value)
+                    let euro = document.getElementById("amountInEuros")
+                    let dollar =  document.getElementById("amountInDollars")
+
+                    let converterEuro = euroRate * userMoney
+                    euro.textContent = converterEuro.toFixed(2)
+
+                    let converterDollar = dollarRate * userMoney
+                    dollar.textContent = converterDollar.toFixed(2)
+                }
+            </script>
+        </div>
+        <a class="link__back" href="./task2.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>

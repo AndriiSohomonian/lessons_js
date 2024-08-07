@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №7</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №7</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.</h2>
+        <div class="wrapper__result">
+            <div class="task__container">
+                <div class="operation">
+                    <button onclick="startPlanning()" class="btr">Почати планування подорожі </button>
+                </div>
+            </div>
+            <script>
+                function startPlanning() {
+                    let list = document.createElement('div')
+                    list.classList.add('choice-list')
+                    
+                    let wrapper = document.getElementsByClassName('task__container')[0]
+                    wrapper.append(list)
+                    let titleTransport = document.createElement('h2')
+                    titleTransport.innerText = 'Оберіть вид транспорту:'
+                    list.append(titleTransport)
+                    let select = document.createElement('select')
+                    select.classList.add('transport')
+                    select.id = 'transport'
+                    //вибір транспорту
+                    let option
+                    for (let i = 1; i <= 3; i++) {
+                        option = document.createElement('option')
+                        let price = 0
+                        switch (i) {
+                            case 1:
+                                price = 1600
+                                break;
+                            case 2: 
+                                price = 800
+                                break;
+                            case 3: 
+                                price = 3000
+                                break;
+                        }
+                        option.setAttribute('value', `${price}`)
+                        switch (i) {
+                            case 1:
+                                option.innerText = 'авто'
+                                break;
+                            case 2: 
+                                option.innerText = 'автобус'
+                                break;
+                            case 3: 
+                                option.innerText = 'літак'
+                                break;
+                        }
+                        select.append(option)
+                    }
+                    list.append(select)
+                    //вибір харчування
+                    let food = document.createElement('div')
+                    let titleFood = document.createElement('h2')
+                    titleFood.innerText = 'Оберіть харчування:'
+                    food.append(titleFood)
+                    let ulFood = document.createElement('ul') 
+                    let liFood
+                    let inputFood
+                    for (let i = 1; i <= 3; i++) {
+                        liFood = document.createElement('li')
+                        inputFood = document.createElement('input')
+                        inputFood.type = 'checkbox'
+                        inputFood.id = 'transport'
+                        switch (i) {
+                            case 1:
+                                inputFood.setAttribute('value', '200')
+                                liFood.innerText = 'Cніданок'
+                                break;
+                            case 2:
+                                inputFood.setAttribute('value', '230')
+                                liFood.innerText = 'Обід'
+                                break;
+                            case 3:
+                                inputFood.setAttribute('value', '400')
+                                liFood.innerText = 'Вечеря'
+                                break;
+                        }
+                        food.append(ulFood)
+                        liFood.prepend(inputFood)
+                        ulFood.append(liFood)
+                    }
+                    list.append(food)
+                    //вибір гіда
+                    let guide = document.createElement('div')
+                    let titleGuide = document.createElement('h2')
+                    titleGuide.innerText = 'Оберіть одного з 3-х гідів:'
+                    guide.append(titleGuide)
+                    let ulGuide = document.createElement('ul')
+                    let liGuide
+                    let inputGuide
+                    for (let i = 1; i <= 3; i++) {
+                        liGuide = document.createElement('li')
+                        liGuide.innerText = 'ok'
+                        inputGuide = document.createElement('input')
+                        inputGuide.type = 'radio'
+                        inputGuide.id = 'guide'
+                        switch (i) {
+                            case 1:
+                                inputGuide.setAttribute('value', '600')
+                                liGuide.innerText = 'Лариса Старун'
+                                break;
+                            case 2:
+                                inputGuide.setAttribute('value', '830')
+                                liGuide.innerText = 'Денис Васильєв'
+                                break;
+                            case 3:
+                                inputGuide.setAttribute('value', '420')
+                                liGuide.innerText = 'Марія Коркач'
+                                break;
+                        }
+                        liGuide.prepend(inputGuide)
+                        ulGuide.append(liGuide)
+                    }
+                    guide.append(ulGuide)
+                    list.append(guide)
+                    let toCount = document.createElement('div')
+                    toCount.classList.add('operation')
+                    let button = document.createElement('button')
+                    button.classList.add('btr')
+                    button.innerText = 'Підрахувати загальну вартість'
+
+                    button.addEventListener('click', function () {
+                        let costOfTrip = parseInt(document.querySelector('select').value)
+                        let transport = parseInt(document.getElementById('transport').value)
+                        let foodList = document.querySelectorAll('input[id=transport]')
+                        let guide = document.querySelectorAll('input[id=guide]')
+
+                        console.log(foodList)
+                        for (const foodEl of foodList) {
+                            if (foodEl.checked) {
+                                costOfTrip += parseInt(foodEl.value)
+                            }
+                        }
+                        for (const guideEl of guide) {
+                            if(guideEl.checked){
+                                costOfTrip += parseInt(guideEl.value)
+                            }
+                        }
+                        let answer = document.createElement('h2')
+                        answer.innerText = `Загальна вартість подорожі: ${costOfTrip}`
+                        list.append(answer)
+                    })
+                    toCount.append(button)
+                    list.append(toCount)
+                }
+
+                
+            </script>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

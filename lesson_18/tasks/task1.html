@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №1</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №1</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Розробити калькулятор</h2>
+        <div class="wrapper__result">
+            <div class="task__container">
+                <div class="input__line">
+                    <h2>Перше число:</h2>
+                    <input class="task__container num" type="number" id="firstNum">
+                </div>
+                <div class="input__line">
+                    <h2>Друге число:</h2>
+                    <input class="task__container num" type="number" id="secondNum">
+                </div>
+                <div class="operation">
+                    <button onclick="getOperation('addition')" class="btr" id="addition">Додати</button>
+                    <button onclick="getOperation('subtraction')" class="btr" id="subtraction">Віднімання</button>
+                    <button onclick="getOperation('multiply')" class="btr" id="multiply">Помножити</button>
+                    <button onclick="getOperation('division')" class="btr" id="division">Ділення</button>
+                </div>
+                <div class="answer">
+                    Відповідь: <span id="answer"></span>
+                </div>
+            </div>
+            <script>
+                "use strict"
+                function getOperation(operation) {
+                    const firstNum = parseFloat(document.getElementById('firstNum').value) 
+                    const secondNum = parseFloat(document.getElementById('secondNum').value)
+                    
+                    let result
+                    switch(operation){
+                        case 'addition':
+                            result = firstNum + secondNum
+                            break
+                        case 'subtraction':
+                            result = firstNum - secondNum
+                            break 
+                        case 'multiply':
+                            result = firstNum * secondNum
+                            break
+                        case 'division':
+                            if(firstNum === 0 || secondNum===0) result = 'Ділення неможливе'
+                            else result = firstNum/secondNum
+                    }
+                    return document.getElementById('answer').innerText = result
+                }
+                
+            </script>
+        </div>
+        <a class="link__back" href="./task1.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    
+    
+</body>
+</html>

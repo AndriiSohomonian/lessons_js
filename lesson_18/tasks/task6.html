@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №6</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №6</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</h2>
+        <div class="wrapper__result">
+            <div class="task__container">
+                <div class="input__line">
+                    <h2>Введіть кількість оцінок:</h2>
+                    <input class="task__container num" type="number" id="gradesNum">
+                </div>
+                <div class="operation">
+                    <button onclick="getGrades()" class="btr">Ввести оцінки</button>
+                </div>
+            </div>
+            <script>
+                function getGrades() {
+                    /*Створення інпут*/
+                    let wrapper = document.createElement('div')
+                    wrapper.classList.add('task__container')
+                    const numberOfGrades = document.getElementById("gradesNum").value
+                    let createInput = document.createElement('div')
+                    createInput.classList.add('line')
+                    for (let i = 0; i < numberOfGrades; i++) {
+                        let el = document.createElement('input')
+                        el.classList.add('num')
+                        el.id = `el${i}`
+                        createInput.append(el)
+                    }
+                    wrapper.append(createInput)
+                    document.body.append(wrapper)
+                    /*обчислення середнього балу*/
+                    let operation = document.createElement('div')
+                    operation.classList.add('operation')
+                    let button = document.createElement('button')
+                    button.innerText = 'Знайти середнє значення'
+                    button.classList.add('btr')
+                    button.addEventListener('click', function() {
+                        let res = 0
+                        for (let i = 0; i < numberOfGrades; i++) {
+                            res += parseInt( document.getElementById(`el${i}`).value)
+                        }
+                        res /= numberOfGrades
+                        let answer = document.createElement('div')
+                        answer.innerText = `Середній бал: ${res}`
+                        wrapper.append(answer)
+                    })
+                    operation.append(button)
+                    wrapper.append(operation)
+                }
+                
+            </script>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Завдання №3</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title-r">ЗАВДАННЯ №3</h1>
+    </header>
+    <div class="wrapper">
+        <h2 class="wrapper__title">Користувач задає рік народження. Визначити кількість років користувача</h2>
+        <div class="wrapper__result">
+            <div class="task__container">
+                <div class="input__line">
+                    <h2>Введіть ваш рік народження:</h2>
+                    <input class="task__container num" type="number" id="yearOfBirth">
+                </div>
+                <div class="operation">
+                    <button onclick="userAge()" class="btr">Підрахувати</button>
+                </div>
+                <div class="answer">
+                    Відповідь: <span id="answer"></span>
+                </div>
+            </div>
+            <script>
+                "use strict"
+                function userAge(){
+                    const yearOfBirth = document.getElementById('yearOfBirth').value
+                    const currentDate = new Date()
+                    const age = currentDate.getFullYear() - yearOfBirth
+                    return document.getElementById('answer').innerText = age
+                }
+            </script>
+        </div>
+        <a class="link__back" href="./task3.html">Cпробувати ще раз</a>
+    </div>
+    <a class="link__back" href="../index.html">Повернутись до завдань</a>
+    </footer>
+    
+</body>
+</html>
